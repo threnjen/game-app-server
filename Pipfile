@@ -4,9 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-boto3 = "*"
-pandas = "*"
-requests = "*"
+game-engine = {file = "../game-engine/dist/game_engine-0.1.0.tar.gz"}
+game-logic = {file = "../delirium-logic-core/dist/game_logic-0.1.0.tar.gz"}
 
 [dev-packages]
 black = "*"
