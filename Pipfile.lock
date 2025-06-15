@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ab6ea2b933aeec63250a0c3788e3be73f1d4aa0946f863e380f15506d2737bf1"
+            "sha256": "405551d83aadb094f2dbcbc0a59dbe72cc13ab3a34c1300b75af325f51c1b466"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -38,16 +38,22 @@
             "markers": "python_version >= '3.9'",
             "version": "==1.38.36"
         },
+        "game-contracts": {
+            "file": "../game-contracts/dist/game_contracts-0.1.0.tar.gz",
+            "hashes": [
+                "sha256:51ece263329aadc758f8f42fd5f9cbe1cac0a4f4b2e6f0a8128bc8d696eb1b5c"
+            ]
+        },
         "game-engine": {
             "file": "../game-engine/dist/game_engine-0.1.0.tar.gz",
             "hashes": [
-                "sha256:c544674ce59336b27a6c0f345ad7f9e6035ed2413944fb6625d6917e47363a3e"
+                "sha256:2be20fb50531835481e1132c34557bb97dd036963800e95de713150fd6d85111"
             ]
         },
         "game-logic": {
             "file": "../delirium-logic-core/dist/game_logic-0.1.0.tar.gz",
             "hashes": [
-                "sha256:4b9bf6ba1b92104bf2fca009eafdfaf03cc399e848779237aa8fe77bc22109d1"
+                "sha256:b9de12c8bffb0b3d9d0a77929bc6b9dc2fb46eaf1d6cf19da7f51792fbfbd465"
             ]
         },
         "game-runners": {
@@ -184,6 +190,13 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
             "version": "==2.9.0.post0"
+        },
+        "pytz": {
+            "hashes": [
+                "sha256:360b9e3dbb49a209c21ad61809c7fb453643e048b38924c765813546746e81c3",
+                "sha256:5ddf76296dd8c44c26eb8f4b6f35488f3ccbf6fbbd7adee0b7262d43f0ec2f00"
+            ],
+            "version": "==2025.2"
         },
         "s3transfer": {
             "hashes": [
