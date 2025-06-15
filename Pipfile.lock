@@ -41,7 +41,7 @@
         "game-engine": {
             "file": "../game-engine/dist/game_engine-0.1.0.tar.gz",
             "hashes": [
-                "sha256:c590ba6044d2d2b7a27c867456a55effd99503612a60a319fa31e56f836cec15"
+                "sha256:c544674ce59336b27a6c0f345ad7f9e6035ed2413944fb6625d6917e47363a3e"
             ]
         },
         "game-logic": {
@@ -53,7 +53,7 @@
         "game-runners": {
             "file": "../game-runners/dist/game_runners-0.1.0.tar.gz",
             "hashes": [
-                "sha256:2b15ce3c6459e484437afe5608f19e6460fa268ac708e631542b0013be431f1f"
+                "sha256:fb50119efcbb0ea6e0393816fa5b8ae7cea8ec29de368fcb9fbcd81bff3223fc"
             ]
         },
         "jmespath": {
