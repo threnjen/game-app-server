@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b371b0b6a86c74c05c9d240e79637fb98703dc3d564349c9daee4858b667504d"
+            "sha256": "ab6ea2b933aeec63250a0c3788e3be73f1d4aa0946f863e380f15506d2737bf1"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -22,6 +22,22 @@
             "markers": "python_version >= '3.8'",
             "version": "==0.7.0"
         },
+        "boto3": {
+            "hashes": [
+                "sha256:34c27d7317cadb62c0e9856e5d5aa0271ef47202d340584831048bc7ac904136",
+                "sha256:efe0aaa060f8fedd76e5c942055f051aee0432fc722d79d8830a9fd9db83593e"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==1.38.36"
+        },
+        "botocore": {
+            "hashes": [
+                "sha256:4a1ced1a4218bdff0ed5b46abb54570d473154ddefafa5d121a8d96e4b76ebc1",
+                "sha256:b6a50b853f6d23af9edfed89a59800c6bc1687a947cdd3492879f7d64e002d30"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==1.38.36"
+        },
         "game-engine": {
             "file": "../game-engine/dist/game_engine-0.1.0.tar.gz",
             "hashes": [
@@ -33,6 +49,20 @@
             "hashes": [
                 "sha256:4b9bf6ba1b92104bf2fca009eafdfaf03cc399e848779237aa8fe77bc22109d1"
             ]
+        },
+        "game-runners": {
+            "file": "../game-runners/dist/game_runners-0.1.0.tar.gz",
+            "hashes": [
+                "sha256:2b15ce3c6459e484437afe5608f19e6460fa268ac708e631542b0013be431f1f"
+            ]
+        },
+        "jmespath": {
+            "hashes": [
+                "sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980",
+                "sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==1.0.1"
         },
         "pydantic": {
             "hashes": [
@@ -147,6 +177,30 @@
             "markers": "python_version >= '3.9'",
             "version": "==2.33.2"
         },
+        "python-dateutil": {
+            "hashes": [
+                "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3",
+                "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
+            "version": "==2.9.0.post0"
+        },
+        "s3transfer": {
+            "hashes": [
+                "sha256:0148ef34d6dd964d0d8cf4311b2b21c474693e57c2e069ec708ce043d2b527be",
+                "sha256:f5e6db74eb7776a37208001113ea7aa97695368242b364d73e91c981ac522177"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==0.13.0"
+        },
+        "six": {
+            "hashes": [
+                "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274",
+                "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
+            "version": "==1.17.0"
+        },
         "typing-extensions": {
             "hashes": [
                 "sha256:8676b788e32f02ab42d9e7c61324048ae4c6d844a399eebace3d4979d75ceef4",
@@ -162,6 +216,14 @@
             ],
             "markers": "python_version >= '3.9'",
             "version": "==0.4.1"
+        },
+        "urllib3": {
+            "hashes": [
+                "sha256:414bc6535b787febd7567804cc015fee39daab8ad86268f1310a9250697de466",
+                "sha256:4e16665048960a0900c702d4a66415956a584919c03361cac9f1df5c5dd7e813"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==2.4.0"
         }
     },
     "develop": {
