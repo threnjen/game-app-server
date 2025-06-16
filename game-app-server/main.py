@@ -71,10 +71,10 @@ if __name__ == "__main__":
 
     while not game_engine.is_game_over():
 
-        input_data = runner.poll_for_input(player_id)
+        input_data = runner.poll_for_message_from_client()
 
         response = game_engine.handle_input(input_data)
 
-        runner.push_response(player_id, response)
+        runner.push_message_to_client(player_id=player_id, payload=response)
 
     print("Game over. Exiting.")
