@@ -26,7 +26,7 @@ def load_game_logic(game_name: str):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Run the game engine.")
+    parser = argparse.ArgumentParser(description="Set up the game details.")
     parser.add_argument(
         "game_location",
         type=str,
@@ -65,5 +65,16 @@ if __name__ == "__main__":
     print(f"Loaded game logic: {game_logic_cls.__name__}")
 
     game_engine = GameEngine(game_logic, app_runner=runner, new_game=True)
-    game_engine.play_game()
     print("Game engine started.")
+
+    player_id = game_engine.get_current_player()
+
+    while not game_engine.is_game_over():
+
+        input_data = runner.poll_for_input(player_id)
+
+        response = game_engine.handle_input(input_data)
+
+        runner.push_response(player_id, response)
+
+    print("Game over. Exiting.")

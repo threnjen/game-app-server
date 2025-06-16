@@ -22,6 +22,14 @@
             "markers": "python_version >= '3.8'",
             "version": "==0.7.0"
         },
+        "anyio": {
+            "hashes": [
+                "sha256:673c0c244e15788651a4ff38710fea9675823028a6f08a5eda409e0c9840a028",
+                "sha256:9f76d541cad6e36af7beb62e978876f3b41e3e04f2c1fbf0884604c0a9c4d93c"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==4.9.0"
+        },
         "boto3": {
             "hashes": [
                 "sha256:34c27d7317cadb62c0e9856e5d5aa0271ef47202d340584831048bc7ac904136",
@@ -38,29 +46,45 @@
             "markers": "python_version >= '3.9'",
             "version": "==1.38.36"
         },
+        "fastapi": {
+            "hashes": [
+                "sha256:1e2c2a2646905f9e83d32f04a3f86aff4a286669c6c950ca95b5fd68c2602681",
+                "sha256:e94613d6c05e27be7ffebdd6ea5f388112e5e430c8f7d6494a9d1d88d43e814d"
+            ],
+            "markers": "python_version >= '3.8'",
+            "version": "==0.115.12"
+        },
         "game-contracts": {
             "file": "../game-contracts/dist/game_contracts-0.1.0.tar.gz",
             "hashes": [
-                "sha256:51ece263329aadc758f8f42fd5f9cbe1cac0a4f4b2e6f0a8128bc8d696eb1b5c"
+                "sha256:0cdf11aae9d6a04e7a305e06eb529292c645ea5a94c863804dcb1b60a59f5981"
             ]
         },
         "game-engine": {
             "file": "../game-engine/dist/game_engine-0.1.0.tar.gz",
             "hashes": [
-                "sha256:2be20fb50531835481e1132c34557bb97dd036963800e95de713150fd6d85111"
+                "sha256:ec63b5b394ff7fb4f3be0de9a86ff309e987daa33f861ba21123b6f5149e39e1"
             ]
         },
         "game-logic": {
             "file": "../delirium-logic-core/dist/game_logic-0.1.0.tar.gz",
             "hashes": [
-                "sha256:b9de12c8bffb0b3d9d0a77929bc6b9dc2fb46eaf1d6cf19da7f51792fbfbd465"
+                "sha256:9b7d74dd36f96cd7e250035f0e558ef1537e0d5592ac588064ae272e6b61c28a"
             ]
         },
         "game-runners": {
             "file": "../game-runners/dist/game_runners-0.1.0.tar.gz",
             "hashes": [
-                "sha256:fb50119efcbb0ea6e0393816fa5b8ae7cea8ec29de368fcb9fbcd81bff3223fc"
+                "sha256:4ecc5ece4bcd1b48bda33dd248fc9964f389e2e42acd47be4d3af6bcbbb7a44b"
             ]
+        },
+        "idna": {
+            "hashes": [
+                "sha256:12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9",
+                "sha256:946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==3.10"
         },
         "jmespath": {
             "hashes": [
@@ -213,6 +237,22 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
             "version": "==1.17.0"
+        },
+        "sniffio": {
+            "hashes": [
+                "sha256:2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2",
+                "sha256:f4324edc670a0f49750a81b895f35c3adb843cca46f0530f79fc1babb23789dc"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==1.3.1"
+        },
+        "starlette": {
+            "hashes": [
+                "sha256:595633ce89f8ffa71a015caed34a5b2dc1c0cdb3f0f1fbd1e69339cf2abeec35",
+                "sha256:7f7361f34eed179294600af672f565727419830b54b7b084efe44bb82d2fccd5"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==0.46.2"
         },
         "typing-extensions": {
             "hashes": [
