@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "db6184dea8e06fbf44c99b36c01a77aa61054c07d5eb4aa78257da33ddb2f426"
+            "sha256": "51407df7ed5b4b0b450274bc13f2afe58a7c231aabf74033adc2d9fa27c955b9"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -32,19 +32,19 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:0fe6b7d1974851588ec1edd39c66d9525d539133e02c7f985f9ebec5e222c0db",
-                "sha256:6f4163cd9e030afd1059e8a6daa178835165b79eb0b5325a8cd447020b895921"
+                "sha256:a43cad12c18607ae9addfc0a98366aae5762b1a4880529f82295b21473686433",
+                "sha256:fcef3e08513d276c97d72d5e7ab8f3ce9950170784b9b5cf4fab327cdb577503"
             ],
             "markers": "python_version >= '3.9'",
-            "version": "==1.38.38"
+            "version": "==1.38.40"
         },
         "botocore": {
             "hashes": [
-                "sha256:aa5cc63bf885819d862852edb647d6276fe423c60113e8db375bb7ad8d88a5d9",
-                "sha256:acf9ae5b2d99c1f416f94fa5b4f8c044ecb76ffcb7fb1b1daec583f36892a8e2"
+                "sha256:7528f47945502bf4226e629337c2ac2e454e661ac8fd1dc0fbf7f38082930f3f",
+                "sha256:aefbfe835a7ebe9bbdd88df3999b0f8f484dd025af4ebb3f3387541316ce4349"
             ],
             "markers": "python_version >= '3.9'",
-            "version": "==1.38.38"
+            "version": "==1.38.40"
         },
         "certifi": {
             "hashes": [
@@ -169,7 +169,7 @@
         "game-contracts": {
             "file": "../game-contracts/dist/game_contracts-0.1.0.tar.gz",
             "hashes": [
-                "sha256:8f49f3d754a410d5e8818196aaf959616c60484ea25c01e2b38e692eb6dd6a0f"
+                "sha256:2bae8f30707c05bd771646dabaa657f028a55af32620efbb5d4b0de178f1da70"
             ]
         },
         "game-engine": {
@@ -178,10 +178,16 @@
                 "sha256:6c3bca1b709ec76fa4c231deb5110f8ae00e5b62fb7ed23810a12c03c089f4e8"
             ]
         },
+        "game-metadata-handler": {
+            "file": "../game-framework-metadata-handler/dist/game_metadata_handler-0.1.0.tar.gz",
+            "hashes": [
+                "sha256:9e8e577dfe130dd82a24ede26313893989bedb85fda889718805f0d1673d84c7"
+            ]
+        },
         "game-runners": {
             "file": "../game-runners/dist/game_runners-0.1.0.tar.gz",
             "hashes": [
-                "sha256:e8c2d0018bd2d19ad34ba5711aaee3b12bf5ea56151757506034b12fe9c7045f"
+                "sha256:d156cb2e1e7ddbee5d049f91620e3a047fa50bb8c466c725f1129625c9988937"
             ]
         },
         "idna": {
@@ -392,11 +398,11 @@
         },
         "urllib3": {
             "hashes": [
-                "sha256:414bc6535b787febd7567804cc015fee39daab8ad86268f1310a9250697de466",
-                "sha256:4e16665048960a0900c702d4a66415956a584919c03361cac9f1df5c5dd7e813"
+                "sha256:3fc47733c7e419d4bc3f6b3dc2b4f890bb743906a30d56ba4a5bfa4bbff92760",
+                "sha256:e6b01673c0fa6a13e374b50871808eb3bf7046c4b125b216f6bf1cc604cff0dc"
             ],
             "markers": "python_version >= '3.9'",
-            "version": "==2.4.0"
+            "version": "==2.5.0"
         }
     },
     "develop": {

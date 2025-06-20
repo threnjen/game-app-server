@@ -1,5 +1,6 @@
 from game_contracts.runner_server_abc import RunnerServerABC
 
+
 # from game_contracts.game_logic_interface import GameLogicABC
 import sys
 import argparse
@@ -42,27 +43,11 @@ def parse_args():
 
 
 class GameAppServer:
-    def __init__(self, host_environment, game_name, requesting_client) -> None:
-        self.game_logic = self.load_game_module(game_name)
+    def __init__(self, host_environment, game_name, game_id) -> None:
         self.game_runner = self.load_runner_module(host_environment)
-        self.setup_game_state(requesting_client)
-        self.requesting_client = requesting_client
+        self.game_logic = self.load_game_module(game_name)
+        self.initialize_game_state(game_id)
         self.start_input_loop()
-
-    def load_game_module(self, game_name):
-        if game_name not in registered_games:
-            print(f"Game '{game_name}' is not registered.")
-            sys.exit(1)
-
-        def load_game_logic(game_name: str):  # -> GameLogicABC:
-            """Dynamically load a class from a string like 'game_logic.game_logic.DeliriumLogic'"""
-            module_path, class_name = registered_games.get(game_name, "").rsplit(".", 1)
-            module = importlib.import_module(module_path)
-            return getattr(module, class_name)(requesting_client=self.requesting_client)
-
-        game_logic = load_game_logic(game_name)
-
-        return game_logic
 
     def load_runner_module(self, host_environment):
         if host_environment not in ["local", "cloud"]:
@@ -73,9 +58,22 @@ class GameAppServer:
         print(f"Loaded runner: {runner.__class__.__name__}")
         return runner
 
-    def setup_game_state(self, requesting_client):
-        game_state = self.game_logic.setup_game_state(requesting_client)
-        self.game_runner.push_message_to_client(payload=game_state)
+    def load_game_module(self, game_name):
+        """Dynamically load a class from a string like 'game_logic.game_logic.DeliriumLogic'"""
+        if game_name not in registered_games:
+            print(f"Game '{game_name}' is not registered.")
+            sys.exit(1)
+
+        module_path, class_name = registered_games.get(game_name, "").rsplit(".", 1)
+        module = importlib.import_module(module_path)
+
+        game_logic = getattr(module, class_name)()
+
+        return game_logic
+
+    def initialize_game_state(self, game_id):
+        initial_message = self.game_logic.initialize_game_state(game_id)
+        self.game_runner.push_message_to_client(payload=initial_message)
 
     def start_input_loop(self):
         while not self.game_logic.is_game_over():
@@ -87,9 +85,6 @@ class GameAppServer:
             self.game_runner.push_message_to_client(payload=response)
 
         print("Game over. Exiting.")
-
-    # game_engine = GameEngine(game_logic, app_runner=runner, new_game=True)
-    # print("Game engine started.")
 
 
 if __name__ == "__main__":

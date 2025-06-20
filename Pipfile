@@ -4,10 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-game-contracts = {file = "../game-contracts/dist/game_contracts-0.1.0.tar.gz"}
 delirium-game-logic = {file = "../delirium-logic-core/dist/delirium_game_logic-0.1.0.tar.gz"}
 game-engine = {file = "../game-engine/dist/game_engine-0.1.0.tar.gz"}
 sample-game-logic = {file = "../sample-logic-core/dist/sample_game_logic-0.1.0.tar.gz"}
+game-metadata-handler = {file = "../game-framework-metadata-handler/dist/game_metadata_handler-0.1.0.tar.gz"}
+game-contracts = {file = "../game-contracts/dist/game_contracts-0.1.0.tar.gz"}
 game-runners = {file = "../game-runners/dist/game_runners-0.1.0.tar.gz"}
 
 [dev-packages]
