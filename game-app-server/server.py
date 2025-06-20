@@ -43,7 +43,7 @@ async def poll_to_client(player_id: str):
 
 
 @app.get("/get_games_for_player")
-def get_games_for_player(params):
+def get_games_for_player(params) -> dict:
     player_id = params.get("player_id")
     return metadata_handler.get_games_by_player(player_id)
 
@@ -59,10 +59,7 @@ def initialize_game_app_server(params):
     game_id = params.get("game_id")
     host_environment = "local"
     game_name = params.get("game_name", "delirium")
-    metadata_handler.initialize_game(game_id)
-    game_state = metadata_handler.get_game_state(game_id)
     GameAppServer(host_environment, game_name, game_id)
-    return game_state
 
 
 @app.get("/game_state")
