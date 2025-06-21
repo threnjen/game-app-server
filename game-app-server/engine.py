@@ -1,9 +1,8 @@
 import argparse
 import importlib
-
-# from game_contracts.game_logic_interface import GameLogicABC
 import sys
 
+from game_contracts.game_logic_interface import GameLogicABC
 from game_contracts.runner_server_abc import RunnerServerABC
 
 registered_games = {
@@ -45,11 +44,12 @@ def parse_args():
 class GameAppServer:
     def __init__(self, host_environment, game_name, game_id) -> None:
         self.game_runner = self.load_runner_module(host_environment)
-        self.game_logic = self.load_game_module(game_name)
-        self.initialize_game_state(game_id)
+        game_state = self.load_game_state(game_id, game_name)
+        self.game_logic = self.load_game_module(game_state, game_name)
+        self.initialize_game_state(game_state)
         self.start_input_loop()
 
-    def load_runner_module(self, host_environment):
+    def load_runner_module(self, host_environment: str):
         if host_environment not in ["local", "cloud"]:
             print(f"Host environment '{host_environment}' is not supported.")
             sys.exit(1)
@@ -58,7 +58,14 @@ class GameAppServer:
         print(f"Loaded runner: {runner.__class__.__name__}")
         return runner
 
-    def load_game_module(self, game_name):
+    def load_game_state(self, game_id: str, game_name: str) -> dict:
+        """Load the game state from a persistent storage."""
+        # This is a placeholder for loading game state logic.
+        # In a real application, you would retrieve the game state from a database or file.
+        print(f"Loading game state for game_id: {game_id}, game_name: {game_name}")
+        return {}
+
+    def load_game_module(self, game_state: dict, game_name: str) -> GameLogicABC:
         """Dynamically load a class from a string like 'game_logic.game_logic.DeliriumLogic'"""
         if game_name not in registered_games:
             print(f"Game '{game_name}' is not registered.")
@@ -67,20 +74,29 @@ class GameAppServer:
         module_path, class_name = registered_games.get(game_name, "").rsplit(".", 1)
         module = importlib.import_module(module_path)
 
-        game_logic = getattr(module, class_name)()
+        game_logic = getattr(module, class_name)(game_state)
 
         return game_logic
 
-    def initialize_game_state(self, game_id):
-        initial_message = self.game_logic.initialize_game_state(game_id)
-        self.game_runner.push_message_to_client(payload=initial_message)
+    def initialize_game_state(self, game_state: dict):
+        game_state = self.game_logic.get_game_state()
+        self.game_runner.push_message_to_client(payload=game_state)
+
+    def save_game_state(self, game_state: dict):
+        """Save the game state to a persistent storage."""
+        # This is a placeholder for saving game state logic.
+        # In a real application, you would save the game state to a database or file.
+        print(f"Saving game state: {game_state}")
 
     def start_input_loop(self):
+
         while not self.game_logic.is_game_over():
 
             input_data = self.game_runner.poll_for_message_from_client()
 
-            response = self.game_logic.handle_input(input_data)
+            response = self.game_logic.parse_client_message(input_data)
+
+            self.save_game_state(self.game_logic.get_game_state())
 
             self.game_runner.push_message_to_client(payload=response)
 
