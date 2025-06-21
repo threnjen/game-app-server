@@ -1,13 +1,9 @@
+version: "3"
 services:
   game-app-server:
-    build: ./game-app-server
-    environment:
-      - GAME_MODE=local
-    depends_on:
-      - fastapi-server
-
-  fastapi-server:
-    build: ./fastapi-server
-    command: uvicorn main:app --host 0.0.0.0 --port 8000
-    expose:
-      - "8000"
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    command: poetry run uvicorn server:app --host 0.0.0.0 --port 8000 --reload

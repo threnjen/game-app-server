@@ -1,4 +1,4 @@
-# syntax=docker/socerfile:1
+# syntax=docker/dockerfile:1
 
 FROM python:3.13-slim
 RUN apt-get update && apt-get install -y python3-pip
@@ -8,10 +8,9 @@ ENV ARG_HERE=$ARG_HERE
 
 RUN pip3 install pipenv && pipenv sync
 
-COPY ./ ./
+COPY . .
 
 # Expose the port (if needed for the service)
-EXPOSE 1234
+EXPOSE 8000
 
-ENTRYPOINT ["pipenv", "run", "python", "main.py"]
-CMD ["$ARG_HERE"]
+ENTRYPOINT ["pipenv", "uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]
