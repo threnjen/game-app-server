@@ -1,6 +1,8 @@
-from fastapi import FastAPI, Request
 import asyncio
+
+from fastapi import FastAPI, Request
 from metadata_handler.local_metadata_handler import GameMetadataHandler
+
 from .main import GameAppServer
 
 app = FastAPI()

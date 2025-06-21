@@ -1,10 +1,10 @@
-from game_contracts.runner_server_abc import RunnerServerABC
-
+import argparse
+import importlib
 
 # from game_contracts.game_logic_interface import GameLogicABC
 import sys
-import argparse
-import importlib
+
+from game_contracts.runner_server_abc import RunnerServerABC
 
 registered_games = {
     "delirium": "delirium-game-logic.game_logic.DeliriumLogic",
