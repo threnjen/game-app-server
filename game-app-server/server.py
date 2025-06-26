@@ -1,12 +1,26 @@
 import asyncio
+import os
 
 from fastapi import FastAPI, Request
 from metadata_handler.local_metadata_handler import GameMetadataHandler
 
-from .main import GameAppServer
+from .engine import GameAppServer
+
+local_dev = os.getenv("LOCAL_DEV", "true").lower() == "true"
+
+
+if local_dev:
+    from runners.local.metadata_runner import GameMetadataHandler
+
+    metadata_handler = GameMetadataHandler()
+else:
+    from runners.cloud.metadata_runner import GameMetadataHandler
+
+    metadata_handler = GameMetadataHandler()
+
 
 app = FastAPI()
-metadata_handler = GameMetadataHandler()
+
 
 pending_messages = []
 pending_responses = {}

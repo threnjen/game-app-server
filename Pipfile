@@ -7,10 +7,11 @@ name = "pypi"
 delirium-game-logic = {file = "../delirium-logic-core/dist/delirium_game_logic-0.1.0.tar.gz"}
 sample-game-logic = {file = "../sample-logic-core/dist/sample_game_logic-0.1.0.tar.gz"}
 game-runners = {file = "../game-framework-runners/dist/game_runners-0.1.0.tar.gz"}
+game-contracts = {file = "../game-framework-contracts/dist/game_contracts-0.1.0.tar.gz"}
 fastapi = {extras = ["standard"], version = "*"}
 uvicorn = "*"
-game-contracts = {file = "../game-framework-contracts/dist/game_contracts-0.1.0.tar.gz"}
-game-metadata-handler = {file = "../game-framework-metadata-handler/dist/game_metadata_handler-0.1.0.tar.gz"}
+
+
 
 [dev-packages]
 black = "*"

@@ -13,11 +13,11 @@ registered_games = {
 
 def get_runner(location: str) -> RunnerServerABC:
     if location == "local":
-        from runners.local.runner_server import LocalRunnerServer
+        from runners.local.server_runner import LocalRunnerServer
 
         return LocalRunnerServer()
     else:
-        from runners.cloud.runner_server import CloudRunnerServer
+        from runners.cloud.server_runner import CloudRunnerServer
 
         return CloudRunnerServer()
 
