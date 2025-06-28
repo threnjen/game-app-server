@@ -79,6 +79,6 @@ def initialize_game_app_server(params):
 
 
 @app.get("/game_state")
-def get_get_game_state(params):
+def get_game_state(params):
     game_id = params.get("game_id")
     return metadata_handler.get_game_state(game_id)
