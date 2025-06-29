@@ -14,7 +14,7 @@ game_command_registries = {
 
 registered_game_state = {
     "delirium": "delirium_game_logic.models.data_models.GameState",
-    "sample": "sample_game_logic.game_logic.SampleLogic",
+    "sample": "sample_game_logic.models.data_models.GameState",
 }
 
 
@@ -54,10 +54,7 @@ class GameAppServer:
         self.game_runner = self.load_runner_module(host_environment)
         initial_game_state = self.load_initial_game_state(game_id, game_name)
         command_registry = self.load_command_registry(game_name)
-        game_state_model = self.load_game_state_model(game_name)
-        self.game = self.initialize_initial_game_state(
-            game_state_model, initial_game_state
-        )
+        self.game = self.load_game_state_model(game_name, initial_game_state)
         self.start_input_loop(command_registry)
 
     def load_runner_module(self, host_environment: str):
@@ -83,31 +80,18 @@ class GameAppServer:
         command_registry = getattr(module, attr_name)
         return command_registry
 
-    def load_game_state_model(self, game_name: str) -> GameState:
+    def load_game_state_model(
+        self, game_name: str, initial_game_state: dict
+    ) -> GameState:
         """Dynamically load a class from a string like 'delirium_game_logic.models.data_models.GameState"""
         registry_path = registered_game_state[game_name]
         module_path, attr_name = registry_path.rsplit(".", 1)
         module = importlib.import_module(module_path)
         game_state_model = getattr(module, attr_name)
-        return game_state_model
-
-    def initialize_initial_game_state(
-        self, game_state_model: GameState, initial_game_state: dict
-    ):
-        # initial_game_state = self.game_logic.get_initial_game_state()
-        # self.game_runner.push_message_to_client(payload=initial_game_state)
-
-        # PLACEHOLDER Command Registry
-        # Needs to call a method to initialize the game state with the loaded state.
-        print(f"Initializing game state: {initial_game_state}")
-
-        # Perhaps the Command registry needs a "GameState" object to initialize the game state.
-        # Remember that ALL Command objects are called with "execute" method.
-        return GameState(**initial_game_state)
+        return game_state_model(**initial_game_state)
 
     def start_input_loop(self, command_registry: dict):
 
-        # while not self.game_logic.is_game_over():
         while True:
 
             command_json = self.game_runner.poll_for_message_from_client(self.game_id)
