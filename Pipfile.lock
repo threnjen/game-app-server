@@ -163,7 +163,7 @@
         "delirium-game-logic": {
             "file": "../delirium-logic-core/dist/delirium_game_logic-0.1.0.tar.gz",
             "hashes": [
-                "sha256:a120e04d1fd18cdcb967fa3b408d077559bb4b6d28141c9634612dc453428124"
+                "sha256:14063ee77d0cecef99abae5d02a2a570e9550b579bcf82b9730af5fe78889f01"
             ]
         },
         "dnspython": {
@@ -207,7 +207,7 @@
         "game-contracts": {
             "file": "../game-framework-contracts/dist/game_contracts-0.1.0.tar.gz",
             "hashes": [
-                "sha256:db08b2f1cb49216e893842c169253cd05175cabf7fdbfa5ac2110c0e835b2a11"
+                "sha256:8693744542860111938b3e9e204a2db2b006d9e39c4fb84be4680ddf44f84ec3"
             ]
         },
         "game-runners": {

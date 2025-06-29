@@ -1,8 +1,9 @@
 import argparse
 import importlib
 import sys
+import json
 
-from game_contracts.game_logic_interface import GameLogicABC
+from game_contracts.game_state import GameState
 from game_contracts.runner_server_abc import RunnerServerABC
 
 
@@ -49,12 +50,11 @@ def parse_args():
 
 class GameAppServer:
     def __init__(self, host_environment, game_name, game_id) -> None:
+        self.game_id = game_id
         self.game_runner = self.load_runner_module(host_environment)
         initial_game_state = self.load_initial_game_state(game_id, game_name)
-        # self.game_logic = self.load_game_module(initial_game_state, game_name)
         command_registry = self.load_command_registry(game_name)
         game_state_model = self.load_game_state_model(game_name)
-        self.game_id = game_id
         self.game = self.initialize_initial_game_state(
             game_state_model, initial_game_state
         )
@@ -76,19 +76,6 @@ class GameAppServer:
         print(f"Loading game state for game_id: {game_id}, game_name: {game_name}")
         return {}
 
-    # def load_game_module(self, game_state: dict, game_name: str) -> GameLogicABC:
-    #     """Dynamically load a class from a string like 'game_logic.game_logic.DeliriumLogic'"""
-    #     if game_name not in registered_games:
-    #         print(f"Game '{game_name}' is not registered.")
-    #         sys.exit(1)
-
-    #     module_path, class_name = registered_games.get(game_name, "").rsplit(".", 1)
-    #     module = importlib.import_module(module_path)
-
-    #     game_logic = getattr(module, class_name)(game_state)
-
-    #     return game_logic
-
     def load_command_registry(self, game_name: str):
         registry_path = game_command_registries[game_name]
         module_path, attr_name = registry_path.rsplit(".", 1)
@@ -96,8 +83,8 @@ class GameAppServer:
         command_registry = getattr(module, attr_name)
         return command_registry
 
-    def load_game_state_model(self, game_name: str):
-        """Dynamically load a class from a string like 'game_logic.models.data_models.Game"""
+    def load_game_state_model(self, game_name: str) -> GameState:
+        """Dynamically load a class from a string like 'delirium_game_logic.models.data_models.GameState"""
         registry_path = registered_game_state[game_name]
         module_path, attr_name = registry_path.rsplit(".", 1)
         module = importlib.import_module(module_path)
@@ -116,26 +103,28 @@ class GameAppServer:
 
         # Perhaps the Command registry needs a "GameState" object to initialize the game state.
         # Remember that ALL Command objects are called with "execute" method.
-        return GameState(initial_game_state)
+        return GameState(**initial_game_state)
 
     def start_input_loop(self, command_registry: dict):
 
         # while not self.game_logic.is_game_over():
         while True:
 
-            command_json = self.game_runner.poll_for_message_from_client()
+            command_json = self.game_runner.poll_for_message_from_client(self.game_id)
 
             input_command_type = command_json.get("category")
 
-            command_registry.get(input_command_type)(command_json).execute(self.game)
+            command_registry.get(input_command_type)(**command_json).execute(self.game)
 
-            self.game = self.game.model_dump_json()
+            game_state = self.game.model_dump_json()
 
-            self.game_runner.push_message_to_client(payload=self.game)
+            self.game_runner.push_message_to_client(
+                game_id=self.game_id, payload=json.loads(game_state)
+            )
 
-            self.save_game_state(self.game)
+            self.save_game_state(game_state)
 
-    def save_game_state(self, game_state: dict):
+    def save_game_state(self, game_state: str):
         """Save the game state to a persistent storage."""
         # This is a placeholder for saving game state logic.
         # In a real application, you would save the game state to a database or file.
